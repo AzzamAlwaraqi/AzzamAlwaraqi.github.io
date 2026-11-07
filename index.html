@@ -43,7 +43,7 @@
   --bar-h: 60px;
   color-scheme: light;
 }
-/* Light is the default; dark only when the visitor switches it on */
+/* The script at the top of the page sets dark unless the visitor switched to light; these are the light values */
 :root[data-theme="dark"] {
   --paper: #0f1420; --surface: #181f2e; --ink: #eef1f6; --ink-2: #ccd3de; --muted: #9ea8b8;
   --rule: #2c3547; --accent: #94b2ff; --on-accent: #0f1420; --accent-soft: #1f2b49;
@@ -422,7 +422,7 @@ section.band { display: block; }
 <body>
 
 <script>
-// Theme and language. Light and English unless the visitor picked otherwise, remembered in this browser only.
+// Theme and language. Dark and English unless the visitor picked otherwise, remembered in this browser only.
 // The page is written in English; AR maps each English text to Arabic, and tr() looks a string up, filling {placeholders}.
 var AR = {
 "Azzam Alwaraqi": "عزام الوراقي",
@@ -984,7 +984,7 @@ function tr(en, vars) {
 (function () {
   var theme, lang, root = document.documentElement;
   try { theme = localStorage.getItem('pf-theme'); lang = localStorage.getItem('pf-lang'); } catch (e) { /* storage blocked: use the defaults */ }
-  root.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
+  root.setAttribute('data-theme', theme === 'light' ? 'light' : 'dark');
   I18N.lang = lang === 'ar' ? 'ar' : 'en';
   root.lang = I18N.lang; root.dir = I18N.lang === 'ar' ? 'rtl' : 'ltr';
 })();
